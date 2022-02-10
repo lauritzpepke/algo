@@ -1,3 +1,5 @@
+package Uge1;
+
 import java.io.*;
 import java.util.*;
 

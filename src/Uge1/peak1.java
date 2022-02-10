@@ -1,3 +1,5 @@
+package Uge1;
+
 import java.util.Scanner;
 
 public class peak1{
