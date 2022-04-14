@@ -1,28 +1,25 @@
-package Uge1;
+package Uge3;
 
 import java.io.*;
 import java.util.*;
 
-public class Peak3 {
+public class MaxSubarray {
 
-    private int peak3(int[] A, int i, int j) {
-        if (i==j) return i;
+    private int maxSubarray(int[] A) {
+        int max = Integer.MIN_VALUE, max_end = 0;
 
-        int m = (i+j)/2;
-        if (A[m] >= A[m-1] && A[m] >= A[m+1]) {
-            return m;
+        for (int i = 0; i < A.length; i++) {
+            max_end = max_end + A[i];
+            if (max < max_end)
+                max = max_end;
+            if (max_end < 0)
+                max_end = 0;
         }
-        else if (A[m-1] > A[m]) {
-            return peak3(A, i, m-1);
-        }
-        else if (A[m] < A[m+1]) {
-            return peak3(A, m+1, j);
-        }
-        return m;
+        return max;
     }
 
     public static void main(String[] args) throws IOException {
-        new Peak3().run();
+        new Uge3.MaxSubarray().run();
     }
 
     private void run() throws IOException {
@@ -35,6 +32,6 @@ public class Peak3 {
         for (int i = 0; i < A.length; i++) {
             A[i] = Integer.parseInt(st.nextToken());
         }
-        System.out.println((peak3(A, 0, A.length-1)));
+        System.out.println((maxSubarray(A)));
     }
 }
